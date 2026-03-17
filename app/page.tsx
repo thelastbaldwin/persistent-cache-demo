@@ -6,7 +6,7 @@ import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useContext, useEffect } from "react";
 import { LoadingContext } from "./context";
 
-export default function Home() {
+const Home: React.FC = () => {
   const { setLoading } = useContext(LoadingContext);
   const router = useRouter();
   const pathname = usePathname();
@@ -52,4 +52,6 @@ export default function Home() {
       pokemon={data.results ?? []}
     />
   );
-}
+};
+
+export default Home;
