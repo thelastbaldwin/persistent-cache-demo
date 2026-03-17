@@ -1,0 +1,1 @@
+export const POKEAPI = "https://pokeapi.co/api/v2";

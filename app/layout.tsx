@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import QueryClientProvider from "./providers/QueryClientProvider";
+import { Container, Stack } from "@mui/material";
+import { Header } from "./components";
+import { AppContext } from "./context";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +30,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
+        // this is a quick fix instead of fighting nextJS to only use Client Side Rendering
+        suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <QueryClientProvider>
+          <AppRouterCacheProvider>
+            <AppContext>
+              <Container>
+                <Stack spacing={2} style={{ height: "100vh" }}>
+                  <Header />
+                  {children}
+                </Stack>
+              </Container>
+            </AppContext>
+          </AppRouterCacheProvider>
+        </QueryClientProvider>
       </body>
     </html>
   );
