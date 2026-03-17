@@ -3,14 +3,17 @@ import Pokemon from "@/app/api";
 import { LoadingContext } from "@/app/context";
 import { Box, Stack, Typography } from "@mui/material";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { use, useContext, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
+import { useContext, useEffect } from "react";
 
 type DetailsProps = {
   params: Promise<{ id: string }>;
 };
 
-const Details: React.FC<DetailsProps> = ({ params }) => {
-  const { id } = use(params);
+const Details: React.FC<DetailsProps> = () => {
+  const searchParams = useSearchParams();
+  const id = Number(searchParams.get("id") ?? 1);
+
   const { setLoading } = useContext(LoadingContext);
 
   const { data, isFetching } = useSuspenseQuery({

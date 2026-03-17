@@ -1,5 +1,5 @@
 "use client";
-import { AppBar, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Toolbar, Typography } from "@mui/material";
 import Link from "next/link";
 import Loading from "./Loading";
 import { useContext } from "react";
@@ -9,7 +9,7 @@ const Header = () => {
   const { loading } = useContext(LoadingContext);
 
   return (
-    <AppBar position="static">
+    <AppBar position="relative">
       <Toolbar>
         <Link href="/">
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
@@ -17,7 +17,18 @@ const Header = () => {
           </Typography>
         </Link>
       </Toolbar>
-      {loading && <Loading />}
+      {loading && (
+        <Box
+          style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            width: "100%",
+          }}
+        >
+          <Loading />
+        </Box>
+      )}
     </AppBar>
   );
 };

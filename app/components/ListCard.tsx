@@ -11,7 +11,7 @@ const ListCard: React.FC<ListCardProps> = ({ pokemon }) => {
     // overflow visible fixes an odd bug with overflow hidden on the parent
     <Card component="li" style={{ overflow: "visible" }}>
       <CardContent>
-        <Link href={`/details/${pokemon.id}`}>
+        <Link href={`/details?id=${pokemon.id}`}>
           <Typography>{pokemon.name}</Typography>
         </Link>
       </CardContent>
