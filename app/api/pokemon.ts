@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid";
 import {
   get,
   POKEAPI,
@@ -45,7 +46,7 @@ export default class Pokemon {
       return {
         ...details,
         ...species,
-        uid: crypto.randomUUID(),
+        uid: uuidv4(),
       };
     }
     return null;
