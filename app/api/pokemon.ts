@@ -47,6 +47,7 @@ export default class Pokemon {
         ...details,
         ...species,
         uid: uuidv4(),
+        date: new Date().toString(),
       };
     }
     return null;

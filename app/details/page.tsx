@@ -3,6 +3,7 @@ import Pokemon from "@/app/api";
 import { LoadingContext } from "@/app/context";
 import { Box, Stack, Typography } from "@mui/material";
 import { useSuspenseQuery } from "@tanstack/react-query";
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useContext, useEffect } from "react";
 
@@ -41,10 +42,16 @@ const Details: React.FC<DetailsProps> = () => {
       </Typography>
       {data.sprites.front_default && (
         <Box>
-          <img src={data.sprites.front_default} alt={data.name} />
+          <Image
+            src={data.sprites.front_default}
+            alt={data.name}
+            width={96}
+            height={96}
+          />
         </Box>
       )}
       <Typography suppressHydrationWarning={true}>uid: {data.uid}</Typography>
+      <Typography suppressHydrationWarning={true}>date: {data.date}</Typography>
     </Stack>
   );
 };

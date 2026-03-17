@@ -53,4 +53,5 @@ export type Species = {
   flavor_text_entries: FlavorText[];
 };
 
-export type DetailsApiResponse = Details & Species & { uid: string };
+export type DetailsApiResponse = Details &
+  Species & { uid: string; date: string };

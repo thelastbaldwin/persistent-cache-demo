@@ -18,7 +18,7 @@ const PokemonList: React.FC<PokemonListProps> = ({
   count,
 }) => {
   return (
-    <Stack style={{ overflow: "hidden" }}>
+    <Stack style={{ overflow: "hidden" }} gap={2}>
       <Pagination
         page={page}
         count={Math.ceil(count / limit)}
